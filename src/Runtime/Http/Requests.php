@@ -105,6 +105,8 @@ class Requests
     private static function init(RequestOptions $options)
     {
         $ch = curl_init();
+        // force HTTP/1.1
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         curl_setopt($ch, CURLOPT_URL, $options->Url);
         curl_setopt_array($ch, self::$defaultOptions);  //default options
         //include headers in response
